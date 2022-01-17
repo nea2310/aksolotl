@@ -5,6 +5,16 @@ add_action( 'after_setup_theme', 'test_after_setup' );
 
 add_action( 'widgets_init', 'test_widgets' );
 
+add_filter('pre_get_document_title', function($t){ // задаем постам произвольные title, для этого мы предвариетльно добавили новое произвольное поле (настройки -> custom fields suit)
+	if(is_single()){
+		$t = CFS()->get('doc_title');
+	}
+	return $t;
+});
+add_filter('widget_text', 'do_shortcode'); // включает шорткоды в виджетах
+
+add_shortcode('test_recent', 'test_recent');
+
 
 function test_media (){
 	wp_enqueue_style( 'test-main', get_stylesheet_uri()); // wp_enqueue_style - ф-ция подключения стилей
@@ -36,3 +46,49 @@ function test_widgets (){
 		'after_widget'  => "</div>\n"
 	]);
 }
+
+
+function test_recent($atts){
+
+
+global $post;
+$atts = shortcode_atts(array(
+	'cnt' => 5
+), $atts);
+
+	$str = '';
+	
+
+	// параметры по умолчанию
+$args = array(
+	'numberposts' => $atts['cnt'],
+	'orderby'     => 'date',
+	'order'       => 'DESC',
+	'post_type'   => 'post',
+) ;
+
+$postslist =  get_posts($args);
+
+foreach($postslist as $post){
+	setup_postdata($post);
+
+	$link = get_the_permalink();
+	$title = get_the_title();
+	$dt = get_the_date();
+	$intro = CFS()->get('intro');
+
+	$str .= "
+	<div>
+	<div><em>$dt</em></div>
+	<div><strong>$title</strong></div>
+	<div>$intro</div>
+	<a href=\"$link\" >Далее...</a>
+	</div>
+	";
+}
+
+ wp_reset_postdata(); // сброс
+
+ return $str;
+
+};

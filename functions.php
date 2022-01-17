@@ -4,6 +4,15 @@ add_action( 'wp_enqueue_scripts', 'test_media'); // wp_enqueue_scripts - хук,
 add_action( 'after_setup_theme', 'test_after_setup' );
 
 add_action( 'widgets_init', 'test_widgets' );
+/*pre_get_document_title - работает до того, как WP стал рассчитывать title и если она
+ вернет что-то отличное от пустоты, то title WP рассчитывать не станет.
+ Поэтому хуки document_title_parts, document_title_separator в WP даже не случатся, если 
+ pre_get_document_title уже отработала. И поэтому когда мы находимся на странице одной записи (is_single),
+ мы берем из дополнительных полей title для этой записи (CFS()->get('doc_title')), и только в противном случае 
+ (если это не is_single) либо если этого поля нет - отработают фильтры add_filter('document_title_parts', function...
+ и add_filter('document_title_separator', function ...
+ 
+ */
 
 add_filter('pre_get_document_title', function($t){ // задаем постам произвольные title, для этого мы предвариетльно добавили новое произвольное поле (настройки -> custom fields suit)
 	if(is_single()){
@@ -13,6 +22,21 @@ add_filter('pre_get_document_title', function($t){ // задаем постам 
 });
 add_filter('widget_text', 'do_shortcode'); // включает шорткоды в виджетах
 
+add_filter('document_title_parts', function($parts){
+$parts['tagline'] .= '!';
+return($parts);
+});
+
+
+add_filter('document_title_separator', function($sep){
+ return '|';
+	});
+
+add_filter('the_content', function($content){
+	return str_replace('-[]-', '!!!', $content);
+	});
+
+	
 add_shortcode('test_recent', 'test_recent');
 
 
@@ -27,6 +51,7 @@ function test_after_setup (){
 	register_nav_menu('footer', 'Для подвала');
 	add_theme_support('post-thumbnails'); // add_theme_support - Регистрирует поддержку новых возможностей темы в WordPress (поддержка миниатюр, форматов записей и т.д.).
 	add_theme_support('title-tag');
+	add_theme_support('post-formats', array('aside', 'quote'));
 }
 
 function test_widgets (){

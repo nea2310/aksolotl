@@ -2,11 +2,9 @@
 
 <main class="clearfix">
 	<div class="postsFlow clearfix">
-		<?php the_post() ?>
+		<?php the_post();?>
 		<article class="postItem-full">
-			<?php the_post_thumbnail( 'medium' ) ?>
-			<h2><?php the_title() ?></h2>
-			<div> <?php the_content() ?> </div>
+			<?php get_template_part('single-templates/content', get_post_format()); ?>
 		</article>
 	</div>
 

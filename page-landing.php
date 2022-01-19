@@ -1,3 +1,9 @@
+<?php  
+/*Template Name: Лендинг*/
+
+?>
+
+
 <?php get_header() ?>
 
 <main class="clearfix">
@@ -8,8 +14,7 @@
 			<div> <?php the_content() ?> </div>
 		</article>
 	</div>
-
+	<div><?php dynamic_sidebar('sidebar-present') ?></div>
 
 </main>
-<?php get_sidebar() ?>
 <?php get_footer() ?>

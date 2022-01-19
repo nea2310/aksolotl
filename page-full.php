@@ -1,3 +1,9 @@
+<?php  
+/*Template Name: Без правой колонки*/
+
+?>
+
+
 <?php get_header() ?>
 
 <main class="clearfix">
@@ -11,5 +17,4 @@
 
 
 </main>
-<?php get_sidebar() ?>
 <?php get_footer() ?>

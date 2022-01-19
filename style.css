@@ -13,12 +13,44 @@ body {
 	padding: 0;
 }
 body * {
+	box-sizing: border-box;
 	font-family: "Arial", sans-serif;
 	font-size: 14px;
 	margin: 0;
 	padding: 0;
 	color: #c2c2c2;
 }
+
+.page-template-page-landing > .wrapper {
+	max-width: 1600px;
+	width: 100%;
+}
+
+.page-template-page-landing main {
+	width: 100%;
+}
+
+.page-template-page-landing .wp-block-column {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border: 1px solid blueviolet;
+	background-color: blueviolet;
+}
+
+.page-template-page-landing .wp-block-group {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+	height: 100%;
+}
+.page-template-page-landing .wp-block-group__inner-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
 span {
 	line-height: 30px;
 }

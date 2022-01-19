@@ -1,4 +1,5 @@
 <?php 
+include_once(__DIR__ . '\inc\test-recent-posts.php');
 add_action( 'wp_enqueue_scripts', 'test_media'); // wp_enqueue_scripts - хук, который регистрирует скрипты
 
 add_action( 'after_setup_theme', 'test_after_setup' );
@@ -70,6 +71,16 @@ function test_widgets (){
 		'before_widget' => '<div class="widget %2$s">',
 		'after_widget'  => "</div>\n"
 	]);
+
+	register_sidebar([
+		'name' => 'Sidebar Presentation',
+		'id' => 'sidebar-present',
+		'description' => 'Презентация',
+		'before_widget' => '<div class="widget %2$s">',
+		'after_widget'  => "</div>\n"
+	]);
+
+	register_widget('Test_Recent_Posts');
 }
 
 

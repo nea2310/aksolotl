@@ -33,7 +33,6 @@ body * {
 .page-template-page-landing .post {
 	display: flex;
 	height: auto;
-	/* border: 1px solid green; */
 }
 
 .page-template-page-landing .post-content {
@@ -42,13 +41,65 @@ body * {
 
 	flex-direction: column;
 	justify-content: space-between;
-	/* background-color: cornflowerblue; */
 }
-.page-template-page-landing .post-text-wrap {
-	/* background-color: lightgreen; */
+
+.page-template-page-landing .post-content .post-preview {
+	height: calc(100% / 3);
 }
-.page-template-page-landing .post-preview {
-	/* background-color: lightcoral; */
+
+.page-template-page-landing .post-content .post-text-wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-grow: 2;
+}
+
+.page-template-page-landing .post-content .post-text-wrap > div:first-child {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.page-template-page-landing .post-content .post-text-wrap > div:nth-child(2) {
+	line-height: 2;
+}
+.page-template-page-landing .post-img_size_large {
+	flex-basis: calc(100% / 3 * 2);
+}
+
+.page-template-page-landing .post-img_size_small {
+	flex-basis: calc(100% / 3);
+}
+
+.page-template-page-landing .post-preview img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.page-template-page-landing .post-img img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+.page-template-page-landing .footer {
+	height: 300px;
+	position: relative;
+	display: flex;
+}
+
+.page-template-page-landing .footer-contacts {
+	position: absolute;
+	align-self: center;
+	/* left: 20px; */
+}
+
+.page-template-page-landing .footer-social {
+	display: flex;
+	width: 130px;
+	justify-content: space-between;
+	margin: auto;
 }
 
 span {

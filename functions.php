@@ -1,5 +1,6 @@
 <?php 
 include_once(__DIR__ . '\inc\test-recent-posts.php');
+include_once(__DIR__ . '\tools\import-svg.php');
 add_action( 'wp_enqueue_scripts', 'test_media'); // wp_enqueue_scripts - хук, который регистрирует скрипты
 
 add_action( 'after_setup_theme', 'test_after_setup' );
@@ -37,6 +38,7 @@ add_filter('the_content', function($content){
 	return str_replace('-[]-', '!!!', $content);
 	});
 
+
 	
 add_shortcode('test_recent', 'test_recent');
 
@@ -73,11 +75,32 @@ function test_widgets (){
 	]);
 
 	register_sidebar([
-		'name' => 'Sidebar Presentation',
-		'id' => 'sidebar-present',
-		'description' => 'Презентация',
+		'name' => 'Sidebar Bottom',
+		'id' => 'sidebar-bottom',
+		'description' => 'Подвал',
 		'before_widget' => '<div class="widget %2$s">',
-		'after_widget'  => "</div>\n"
+		'after_widget'  => "</div>\n",
+		'before_sidebar' => '<div class="footer-contacts %2$s">', // WP 5.6
+		'after_sidebar'  => "</div>\n", // WP 5.6
+	]);
+	register_sidebar([
+		'name' => 'Sidebar Contacts',
+		'id' => 'sidebar-contacts',
+		'description' => 'Контакты',
+		'before_widget' => '<div class="contact %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_sidebar' => '<div class="footer-contacts %2$s">', // WP 5.6
+		'after_sidebar'  => "</div>\n", // WP 5.6
+	]);
+
+	register_sidebar([
+		'name' => 'Sidebar Social',
+		'id' => 'sidebar-social',
+		'description' => 'Соцсети',
+		'before_widget' => '<div class="social %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_sidebar' => '<div class="footer-social %2$s">', // WP 5.6
+		'after_sidebar'  => "</div>\n", // WP 5.6
 	]);
 
 	register_widget('Test_Recent_Posts');

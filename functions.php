@@ -49,6 +49,7 @@ function test_media (){
 
 }
 
+
 function test_after_setup (){
 	register_nav_menu('top', 'Для шапки'); // register_nav_menu - ф-ция подключения меню
 	register_nav_menu('footer', 'Для подвала');

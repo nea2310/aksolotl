@@ -102,6 +102,18 @@ body * {
 	margin: auto;
 }
 
+.header {
+	display: flex;
+	flex-direction: column;
+	/* position: relative; */
+	height: 150px;
+}
+
+.header-logo {
+	/* position: absolute; */
+	align-self: center;
+}
+
 span {
 	line-height: 30px;
 }
@@ -124,7 +136,7 @@ header * {
 .header-bottom {
 	border-bottom: 1px solid #eeeeee;
 }
-.header-top .logo {
+/* .header-top .logo {
 	font-family: val;
 	font-size: 36px;
 	float: left;
@@ -133,8 +145,8 @@ header * {
 	color: #bc8a59;
 	display: block;
 	text-decoration: none;
-}
-.header-top .logo::before {
+} */
+/* .header-top .logo::before {
 	content: "";
 	display: inline-block;
 	width: 25px;
@@ -142,7 +154,7 @@ header * {
 	margin-right: 5px;
 	background: url(assets/img/logo.png) no-repeat;
 	background-size: 100%;
-}
+} */
 .topmenu {
 	float: right;
 	padding: 20px 0;

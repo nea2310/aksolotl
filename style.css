@@ -110,12 +110,12 @@ body * {
 
 	height: 150px;
 } */
-.topmenu {
+/* .topmenu {
 	border: 1px solid blue;
-}
+} */
 .topmenu ul {
 	margin: 0 auto;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	max-width: 920px;
 	display: flex;
 	justify-content: space-between;

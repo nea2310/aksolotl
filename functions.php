@@ -171,8 +171,12 @@ function process_menu($block_menu) {
 		  $block_menu = str_replace($val, $imgLink, $block_menu);
 		}
 	 }
-
-	var_dump ($result[0]); //array(2) { [0]=> int(0) [1]=> int(2) }
+	 for ($i=0; $i<count($array[0]); $i++){
+		 if($i!==$result[0] && $i!==$result[0]-1 && $i!==count($array[0])-1){
+			$b = str_replace('</li>', '</li><div style = "width: 3px; height: 3px; background-color: lightgrey; border-radius: 50%"></div>',  $array[0][$i]);
+			$block_menu = str_replace($array[0][$i], $b, $block_menu);
+		 }
+	 }
 	echo $result[0];
 	return $block_menu;
 }

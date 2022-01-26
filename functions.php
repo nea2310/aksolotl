@@ -153,36 +153,26 @@ foreach($postslist as $post){
 
 };
 
-// add_filter('wp_nav_menu_items','add_new_menu_item', 10, 2);
-// function add_new_menu_item( $nav, $args ) {
-// 	echo var_dump($nav);
 
-//    //  if( $args->theme_location == 'top' ) {
-//    //  	if (is_front_page()) { $my_link_class = "home-link current-menu-item"; } else { $my_link_class = "home-link"; }   	   	
-//    //  	$newmenuitem = '<li class="'.$my_link_class.'"><a href="'.home_url().'"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo.png"></a></li>';
-//    //  	$nav = $newmenuitem.$nav;
-// 	// }
-//     return $nav;
-// }
 
-add_filter('wp_nav_menu', 'replace_tag');
-
-function replace_tag($block_menu) {
-
-	// Выбираем все <li>...</li>
-	preg_match_all('|<li(.*?)</li>|is', $block_menu,  $out_dat);
-	// Проходим в цикле по всем выбранным тегам '<li>' 
-	foreach( $out_dat[0] AS $out_d)
-	{
-	 // если встретили класс "menu-item-home" то делаем 2 действия: удаляем текст (название страницы) из тега <a> и добавляем в тег <a> тег <img>
-		if(strpos($out_d, 'menu-item-home'))
-		{
-			$regexp = "/[A-Za-zА-Яа-яЁё]*<\/a/";
-			$a = preg_replace($regexp, '</a', $out_d); // удаляем текст (название страницы) из тега <a>
-			$imgPath = get_template_directory_uri() . '/assets/img/logo.png';
-			$imgLink = str_replace('</a>', '<img src="' . $imgPath . '" alt="перейти на главную"></a>',  $a); // добавляем в тег <a> тег <img>
-			$block_menu = str_replace($out_d, $imgLink, $block_menu);
+add_filter('wp_nav_menu', 'process_menu');
+function process_menu($block_menu) {
+// Выбираем все <li>...</li>
+	preg_match_all('|<li(.*?)</li>|is', $block_menu,  $array);
+// Проходим в цикле по всем выбранным тегам '<li>' 
+	foreach ($array[0] as  $key=>$val){
+		 // если встретили класс "menu-item-home" то делаем 3 действия:сохраняем индекс этого элемента, удаляем текст (название страницы) из тега <a> и добавляем в тег <a> тег <img>
+		if (strpos($val, 'menu-item-home')){
+		  $result[] = $key; //сохраняем индекс этого элемента
+		  $regexp = "/[A-Za-zА-Яа-яЁё]*<\/a/";
+		  $a = preg_replace($regexp, '</a', $val); // удаляем текст (название страницы) из тега <a>
+		  $imgPath = get_template_directory_uri() . '/assets/img/logo.png';
+		  $imgLink = str_replace('</a>', '<img src="' . $imgPath . '" alt="перейти на главную"></a>',  $a); // добавляем в тег <a> тег <img>
+		  $block_menu = str_replace($val, $imgLink, $block_menu);
 		}
-	}
+	 }
+
+	var_dump ($result[0]); //array(2) { [0]=> int(0) [1]=> int(2) }
+	echo $result[0];
 	return $block_menu;
 }

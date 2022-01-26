@@ -76,12 +76,12 @@ function test_widgets (){
 	]);
 
 	register_sidebar([
-		'name' => 'Sidebar Bottom',
-		'id' => 'sidebar-bottom',
-		'description' => 'Подвал',
+		'name' => 'Sidebar Right column',
+		'id' => 'sidebar-right-column',
+		'description' => 'Правая колонка блога',
 		'before_widget' => '<div class="widget %2$s">',
 		'after_widget'  => "</div>\n",
-		'before_sidebar' => '<div class="footer-contacts %2$s">', // WP 5.6
+		'before_sidebar' => '<div class="right-column %2$s">', // WP 5.6
 		'after_sidebar'  => "</div>\n", // WP 5.6
 	]);
 	register_sidebar([
@@ -152,3 +152,42 @@ foreach($postslist as $post){
  return $str;
 
 };
+
+// add_filter('wp_nav_menu_items','add_new_menu_item', 10, 2);
+// function add_new_menu_item( $nav, $args ) {
+// 	echo var_dump($nav);
+
+//    //  if( $args->theme_location == 'top' ) {
+//    //  	if (is_front_page()) { $my_link_class = "home-link current-menu-item"; } else { $my_link_class = "home-link"; }   	   	
+//    //  	$newmenuitem = '<li class="'.$my_link_class.'"><a href="'.home_url().'"><img src="'.get_stylesheet_directory_uri().'/assets/img/logo.png"></a></li>';
+//    //  	$nav = $newmenuitem.$nav;
+// 	// }
+//     return $nav;
+// }
+
+add_filter('wp_nav_menu', 'replace_tag');
+
+function replace_tag($block_menu) {
+
+	// Выбираем все <a>...</a>
+	preg_match_all('|<li(.*?)</li>|is', $block_menu,  $out_dat);
+
+	// Проходим в цикле по всем выбранным тегам '<a>' 
+	foreach( $out_dat[0] AS $out_d)
+	{
+	
+		 // если встретили класс "menu-item-home" то делаем 2 действия: добавляем в тег <a> тег <img> и удаляем текст (название страницы) из тега <a>
+		 if(strpos($out_d, 'menu-item-home'))
+		 {
+			$regexp = "/[A-Za-zА-Яа-яЁё]*<img/";
+	
+			 $path = get_template_directory_uri() . '/assets/img/logo.png';
+			 $test = str_replace('</a>', '<img src="' . $path . '" alt="перейти на главную"></a>',  $out_d);
+			 $a = preg_replace($regexp, '<img', $test);
+		
+		$block_menu = str_replace($out_d, $a, $block_menu);
+		 }
+	}
+
+	return $block_menu;
+}

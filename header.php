@@ -10,11 +10,6 @@
 <body <?php body_class() ?>>
 	<div class="wrapper">
 		<header class="header">
-			<div class="header-logo">
-				<a href="<?php echo home_url() ?>" class="logo"> <img
-						src="<?php echo get_template_directory_uri() . '/assets/img/logo.png' ?>" alt="логотип сайта">
-				</a>
-			</div>
 			<nav class="topmenu">
 				<div class="menu-button">MENU</div>
 				<?php wp_nav_menu(['theme_location' => 'top',

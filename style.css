@@ -102,6 +102,8 @@ body * {
 	margin: auto;
 }
 
+/****************главное меню***************************/
+
 .header {
 	display: flex;
 	flex-direction: column;

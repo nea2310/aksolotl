@@ -14,7 +14,9 @@
 				<div class="menu-button">MENU</div>
 				<?php wp_nav_menu(['theme_location' => 'top',
 											'container' => null,
-											'items_wrap' => '<ul>%3$s</ul>'])
+											'items_wrap' => '<ul>%3$s</ul>',
+											'walker' => new My_Walker_Nav_Menu()
+											])
 												?>
 			</nav>
 

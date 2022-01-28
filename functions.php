@@ -1,5 +1,8 @@
 <?php 
+include_once(__DIR__ . '\inc\walker.php');
 include_once(__DIR__ . '\inc\test-recent-posts.php');
+include_once(__DIR__ . '\inc\class-my-walker-nav-menu.php');
+
 include_once(__DIR__ . '\tools\import-svg.php');
 add_action( 'wp_enqueue_scripts', 'test_media'); // wp_enqueue_scripts - хук, который регистрирует скрипты
 
@@ -56,6 +59,7 @@ function test_after_setup (){
 	add_theme_support('post-thumbnails'); // add_theme_support - Регистрирует поддержку новых возможностей темы в WordPress (поддержка миниатюр, форматов записей и т.д.).
 	add_theme_support('title-tag');
 	add_theme_support('post-formats', array('aside', 'quote'));
+	add_theme_support( 'menus' );
 }
 
 function test_widgets (){
@@ -153,9 +157,9 @@ foreach($postslist as $post){
 
 };
 
+/*add_filter('wp_nav_menu', 'process_menu');*/
 
 
-add_filter('wp_nav_menu', 'process_menu');
 function process_menu($block_menu) {
 // Выбираем все <li>...</li>
 	preg_match_all('|<li(.*?)</li>|is', $block_menu,  $array);
@@ -180,3 +184,21 @@ function process_menu($block_menu) {
 	echo $result[0];
 	return $block_menu;
 }
+
+
+
+function get_menu_id($location){
+	$locations = get_nav_menu_locations();
+	$menu_id = $locations[$location];
+	return !empty($menu_id) ? $menu_id : '';
+};
+
+add_filter( 'wp_nav_menu_items', 'remove_separators', 10, 2 );
+
+function remove_separators( $items, $args ){
+var_dump($items);
+
+	return $items;
+}
+
+?>

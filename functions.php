@@ -111,7 +111,7 @@ function test_widgets (){
 	register_widget('Test_Recent_Posts');
 }
 
-
+/*Вывод последних (свежих) постов*/
 function test_recent($atts){
 
 
@@ -157,7 +157,55 @@ foreach($postslist as $post){
 
 };
 
-/*add_filter('wp_nav_menu', 'process_menu');*/
+
+
+/*находит id меню по location (задается в register_nav_menu)*/
+function test_get_menu_id($location){
+	$locations = get_nav_menu_locations();
+	$menu_id = $locations[$location];
+	return !empty($menu_id) ? $menu_id : '';
+};
+
+
+/*В главном меню вставить разделители (круглые маркеры) между именами ссылок*/
+add_filter( 'wp_nav_menu_items', 'test_add_separators', 10, 2 );
+
+function test_add_separators( $items, $args ){
+	$reg = "|<li(.*?)</li>|";
+	preg_match_all($reg, $items,  $array);
+
+$home_link;
+/*находим индекс элемента - ссылки на главную страницу*/
+for ($i=0; $i<count($array[0]); $i++){
+	if (strpos($array[0][$i], ' menu-item-home')){
+		$home_link = $i;
+	}
+}
+/*Поставить разделители после всех элементов главного меню, кроме ссылки на главнуб страницу, предшествующей ей ссылки и последней ссылки*/
+for ($i=0; $i<count($array[0]); $i++){
+	if($i!==$home_link && $i!==$home_link-1 && $i!==count($array[0])-1){
+		$sep = str_replace('</li>', '</li><li style = "width: 3px; height: 3px; background-color: lightgrey; border-radius: 50%; padding: 0"></li>',  $array[0][$i]);
+		$items = str_replace($array[0][$i], $sep, $items);
+	};
+}
+return $items;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*add_filter('wp_nav_menu', 'process_menu');
 
 
 function process_menu($block_menu) {
@@ -185,20 +233,6 @@ function process_menu($block_menu) {
 	return $block_menu;
 }
 
-
-
-function get_menu_id($location){
-	$locations = get_nav_menu_locations();
-	$menu_id = $locations[$location];
-	return !empty($menu_id) ? $menu_id : '';
-};
-
-add_filter( 'wp_nav_menu_items', 'remove_separators', 10, 2 );
-
-function remove_separators( $items, $args ){
-var_dump($items);
-
-	return $items;
-}
+*/
 
 ?>

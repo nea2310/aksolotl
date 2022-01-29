@@ -159,9 +159,6 @@ class My_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
 
-		$img_path = get_template_directory_uri() . '/assets/img/logo.png'; //!!!!!!
-		$is_main = strpos($class_names, ' menu-item-home');//!!!!!!
-		$img = $is_main ? '<img src="' . $img_path . '" alt="перейти на главную">':'';//!!!!!!
 
 
 		/**
@@ -235,10 +232,18 @@ class My_Walker_Nav_Menu extends Walker_Nav_Menu {
 		 */
 		$title = apply_filters( 'nav_menu_item_title', $title, $menu_item, $args, $depth );
 
+
+/*Создать тег <img> и задать переменную ($is_main), определяющую, что  это главная страница (в $class_names есть 'menu-item-home')*/
+$img_path = get_template_directory_uri() . '/assets/img/logo.png'; //CUSTOM
+$is_main = strpos($class_names, 'menu-item-home');//CUSTOM
+$img = $is_main ? '<img src="' . $img_path . '" alt="перейти на главную">':'';//CUSTOM
+
+/*Вставить тег <img> внутрь тега <a>, если это главная страница (в $class_names есть 'menu-item-home') 
+(в ином случае вставляем пустую строку)*/
 		$item_output  = $args->before;
 		$item_output .= '<a' . $attributes . '>';
-		$item_output .= $img; //!!!!
-		$item_output .= (!$is_main) ? $args->link_before . $title . $args->link_after: $args->link_before . $args->link_after;//!!!!
+		$item_output .= $img; //CUSTOM
+		$item_output .= (!$is_main) ? $args->link_before . $title . $args->link_after: $args->link_before . $args->link_after;//CUSTOM
 		$item_output .= '</a>';
 		$item_output .= $args->after;
 
@@ -273,6 +278,7 @@ class My_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param stdClass $args        An object of wp_nav_menu() arguments.
 	 */
 	public function end_el( &$output, $data_object, $depth = 0, $args = null ) {
+		
 	
 		if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
 			
@@ -282,7 +288,6 @@ class My_Walker_Nav_Menu extends Walker_Nav_Menu {
 			$t = "\t";
 			$n = "\n";
 		}
-		$output .= "</li><div class = 'separator' style = 'width: 3px; height: 3px; background-color: lightgrey; border-radius: 50%'></div>{$n}"; //!!!!!
-	}
+		$output .= "</li>{$n}";
+		}
 }
-

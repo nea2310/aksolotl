@@ -47,8 +47,18 @@ add_shortcode('test_recent', 'test_recent');
 
 
 function test_media (){
+
 	wp_enqueue_style( 'test-main', get_stylesheet_uri()); // wp_enqueue_style - ф-ция подключения стилей
-	wp_enqueue_script( 'test-script-main', get_template_directory_uri().'/assets/js/script.js');//wp_enqueue_script - ф-ция подключения скриптов
+	wp_enqueue_style( 'test-slick', get_template_directory_uri() . '/slick/slick.css'); // wp_enqueue_style - ф-ция подключения стилей
+	wp_enqueue_style( 'test-slick-theme', get_template_directory_uri() . '/slick/slick-theme.css'); // wp_enqueue_style - ф-ция подключения стилей
+	
+
+	wp_deregister_script('jquery');
+	wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.6.0.js', array(), null, true);
+	wp_enqueue_script('test-slick-script', get_template_directory_uri() .'/slick/slick.min.js', array('jquery'), null, true);//Slick slider
+	wp_enqueue_script('test-script', get_template_directory_uri() .'/assets/js/script.js', array('jquery'), null, true);//ф-ция подключения скриптов
+
+
 
 }
 
@@ -58,7 +68,11 @@ function test_after_setup (){
 	register_nav_menu('footer', 'Для подвала');
 	add_theme_support('post-thumbnails'); // add_theme_support - Регистрирует поддержку новых возможностей темы в WordPress (поддержка миниатюр, форматов записей и т.д.).
 	add_theme_support('title-tag');
-	add_theme_support('post-formats', array('aside', 'quote'));
+	add_theme_support('post-formats',  [
+		'aside', 'gallery', 'link',
+		'image', 'quote', 'status',
+		'video', 'chat', 'audio'
+  ]);
 	add_theme_support( 'menus' );
 }
 
@@ -106,6 +120,38 @@ function test_widgets (){
 		'after_widget'  => "</div>\n",
 		'before_sidebar' => '<div class="footer-social %2$s">', // WP 5.6
 		'after_sidebar'  => "</div>\n", // WP 5.6
+	]);
+
+	register_sidebar([
+		'name' => 'Sidebar Main Image',
+		'id' => 'sidebar-main-image',
+		'description' => 'Главное изображение',
+		'before_sidebar' => '<section class="presentation %2$s">',
+		'after_sidebar'  => "</section>\n",
+	]);
+
+	register_sidebar([
+		'name' => 'Sidebar Infoblock Top',
+		'id' => 'sidebar-infoblock-top',
+		'description' => 'Главная цитата',
+		'before_sidebar' => '<section class="infoblock-top %2$s">',
+		'after_sidebar'  => "</section>\n",
+	]);
+
+	register_sidebar([
+		'name' => 'Sidebar Infoblock Bottom',
+		'id' => 'sidebar-infoblock-bottom',
+		'description' => 'Главная цитата',
+		'before_sidebar' => '<section class="infoblock-bottom %2$s">',
+		'after_sidebar'  => "</section>\n",
+	]);
+
+	register_sidebar([
+		'name' => 'Sidebar Post Slider',
+		'id' => 'sidebar-post-slider',
+		'description' => 'Главная цитата',
+		'before_sidebar' => '<section class="post-slider %2$s">',
+		'after_sidebar'  => "</section>\n",
 	]);
 
 	register_widget('Test_Recent_Posts');

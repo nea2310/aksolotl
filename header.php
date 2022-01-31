@@ -22,4 +22,3 @@
 
 			<?php get_sidebar('header') ?>
 		</header>
-		<div class="content-wrapper clearfix">

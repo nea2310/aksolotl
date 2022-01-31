@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main class="clearfix">
+<main class="content-wrapper">
 	<div class="postsFlow clearfix">
 		<?php if (have_posts()): 
 	while (have_posts()):the_post() ?>

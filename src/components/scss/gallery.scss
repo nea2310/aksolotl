@@ -1,0 +1,75 @@
+/****************** галерея на странице CV***********************/
+.gallery {
+  height: 600px;
+  position: relative;
+
+  .wp-block-gallery {
+    gap: 0;
+    display: grid;
+    grid-template-rows: 300px 300px;
+    grid-template-columns: repeat(6, calc(100% / 6));
+  }
+
+  .wp-block-gallery.wp-block-gallery-1 {
+    gap: 0;
+  }
+
+  .wp-block-image {
+    object-fit: cover;
+    object-position: center;
+    width: 100% !important;
+    box-sizing: border-box;
+
+    &:nth-child(1) {
+      grid-row-start: 1;
+      grid-column-start: 1;
+    }
+    &:nth-child(2) {
+      grid-row-start: 1;
+      grid-column-start: 2;
+    }
+    &:nth-child(3) {
+      grid-row-start: 2;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    &:nth-child(4) {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      grid-column-start: 3;
+    }
+    &:nth-child(5) {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      grid-column-start: 4;
+    }
+    &:nth-child(6) {
+      grid-row-start: 1;
+      grid-column-start: 5;
+      grid-column-end: 7;
+      position: relative;
+    }
+
+    &:nth-child(7) {
+      grid-row-start: 2;
+      grid-column-start: 5;
+    }
+    &:nth-child(8) {
+      grid-row-start: 2;
+      grid-column-start: 6;
+    }
+  }
+
+  .gallery__link {
+    position: absolute;
+    display: block;
+    right: 0;
+    height: 300px;
+    width: calc(100% / 3);
+    z-index: 1;
+    background-image: url("../../assets/images/shop-now.png"),
+      linear-gradient(rgba(134, 192, 158, 0.8), rgba(134, 192, 158, 0.8));
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

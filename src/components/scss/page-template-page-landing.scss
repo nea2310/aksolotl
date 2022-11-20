@@ -1,0 +1,137 @@
+/****************страница Лендинг***************************/
+.page-template-page-landing {
+  color: $color-main;
+
+  .infoblock-top,
+  .infoblock-bottom {
+    height: 350px;
+  }
+
+  .infoblock-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .infoblock-top > li {
+    margin-bottom: 20px;
+  }
+
+  .infoblock-top > li:nth-child(2) {
+    font-weight: bold;
+  }
+
+  .presentation img,
+  .post img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .post {
+    margin: 40px 20px;
+    display: flex;
+    height: 700px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $block-shadow;
+
+    @include media-breakpoint-down($xl) {
+      height: initial;
+    }
+    @include media-breakpoint-down($xs) {
+      margin: 40px 10px;
+      display: block;
+    }
+  }
+
+  .post-preview {
+    @include media-breakpoint-down($xl) {
+      margin-bottom: 30px;
+    }
+    @include media-breakpoint-down($xs) {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .post-img {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    @include media-breakpoint-down($xl) {
+      display: none;
+    }
+  }
+
+  .post-img_size_large {
+    flex-basis: calc(100% / 3 * 2);
+  }
+
+  .post-img_size_small {
+    flex-basis: calc(100% / 3);
+  }
+
+  .post-img-picture {
+    height: 100%;
+    width: 100%;
+  }
+
+  .post-img-picture img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .post-img-emblem {
+    height: auto;
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    left: calc(50% - 100px);
+  }
+
+  .post-slider-horizontal {
+    min-width: 300px;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    @include media-breakpoint-down($xl) {
+      display: none;
+    }
+
+    .slider-wrapper {
+      width: 100%;
+    }
+  }
+
+  .post-slider-vertical {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/1;
+    padding: 20px;
+  }
+
+  .slider-metalamp__wrapper,
+  .slider-metalamp__wrapper_orientation_vertical {
+    padding: 0;
+  }
+
+  .slider-metalamp__wrapper_orientation_vertical .slider-metalamp__frame {
+    left: 0;
+    width: 40px;
+  }
+
+  .slider-metalamp__wrapper:not(.slider-metalamp__wrapper_orientation_vertical) .slider-metalamp__frame {
+    top: 0;
+    height: 35px;
+  }
+}

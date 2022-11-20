@@ -1,0 +1,100 @@
+/*
+Theme Name: Test
+Text Domain: test
+*/
+
+/****************header***************************/
+header {
+  width: 100%;
+  position: relative;
+
+  .header__burger {
+    border-radius: 1px;
+    cursor: pointer;
+
+    @include media-breakpoint-down($sm) {
+      position: absolute;
+      background-color: $color-main;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transition: all 0.9s ease 0s;
+    }
+  }
+
+  .header__burger-button,
+  .header__logo {
+    @include button-reset-style;
+    display: none;
+    cursor: pointer;
+  }
+
+  .header__burger-button {
+    &:before,
+    &:after {
+      @include media-breakpoint-down($sm) {
+        border-radius: 1px;
+        content: "";
+        background-color: $color-main;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.5s ease 0s;
+      }
+    }
+
+    &:before {
+      @include media-breakpoint-down($sm) {
+        top: 0;
+        background-color: $color-main;
+      }
+    }
+
+    &:after {
+      @include media-breakpoint-down($sm) {
+        bottom: 0;
+        background-color: $color-main;
+      }
+    }
+
+    @include media-breakpoint-down($sm) {
+      top: 20px;
+      right: 40px;
+      display: block;
+      z-index: 6;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+    }
+
+    &_active {
+      &::before {
+        transform: rotate(-45deg);
+        top: 9px;
+      }
+
+      &::after {
+        transform: rotate(45deg);
+        bottom: 14px;
+      }
+
+      .header__burger {
+        @include media-breakpoint-down($sm) {
+          transform: scale(0);
+        }
+      }
+    }
+  }
+
+  .header__logo {
+    @include media-breakpoint-down($sm) {
+      display: flex;
+      position: relative;
+      z-index: 5;
+      margin: 20px;
+      width: 100px;
+      margin: 0 auto;
+    }
+  }
+}

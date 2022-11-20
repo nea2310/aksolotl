@@ -47,19 +47,17 @@ add_shortcode('test_recent', 'test_recent');
 
 
 function test_media (){
-
-	wp_enqueue_style( 'test-main', get_stylesheet_uri()); // wp_enqueue_style - ф-ция подключения стилей
-	wp_enqueue_style( 'test-slick', get_template_directory_uri() . '/slick/slick.css'); // wp_enqueue_style - ф-ция подключения стилей
-	wp_enqueue_style( 'test-slick-theme', get_template_directory_uri() . '/slick/slick-theme.css'); // wp_enqueue_style - ф-ция подключения стилей
+	wp_enqueue_style( 'test-main', get_template_directory_uri() . '/dist/assets/css/main.css'); // wp_enqueue_style - ф-ция подключения стилей
+	wp_enqueue_style( 'test-slick', get_template_directory_uri() . '/vendors/slick/slick.css'); // wp_enqueue_style - ф-ция подключения стилей
+	wp_enqueue_style( 'test-slick-theme', get_template_directory_uri() . '/vendors/slick/slick-theme.css'); // wp_enqueue_style - ф-ция подключения стилей
+  wp_enqueue_style( 'test-slider-metalamp', get_template_directory_uri() . '/vendors/slider-metalamp/plugin.css'); // wp_enqueue_style - ф-ция подключения стилей
 	
 
 	wp_deregister_script('jquery');
-	wp_enqueue_script('jquery', get_template_directory_uri() . '/assets/js/jquery-3.6.0.js', array(), null, true);
-	wp_enqueue_script('test-slick-script', get_template_directory_uri() .'/slick/slick.min.js', array('jquery'), null, true);//Slick slider
-	wp_enqueue_script('test-script', get_template_directory_uri() .'/assets/js/script.js', array('jquery'), null, true);//ф-ция подключения скриптов
-
-
-
+	wp_enqueue_script('jquery', get_template_directory_uri() . '/vendors/jquery-3.6.0.js', array(), null, true);
+	wp_enqueue_script('test-slick-script', get_template_directory_uri() .'/vendors/slick/slick.min.js', array('jquery'), null, true);//Slick slider
+  wp_enqueue_script('test-slider-metalamp-script', get_template_directory_uri() .'/vendors/slider-metalamp/plugin.js', array('jquery'), null, true);//Slider Metalamp
+	  wp_enqueue_script('test-script', get_template_directory_uri() .'/dist/assets/js/main.js', array('jquery'), null, true);//ф-ция подключения скриптов
 }
 
 
@@ -83,14 +81,6 @@ function test_widgets (){
 		'description' => 'Правая колонка',
 		'before_widget' => '<div class="widget %2$s">',
 		'after_widget'  => "</div>\n",
-	]);
-
-	register_sidebar([
-		'name' => 'Sidebar Top',
-		'id' => 'sidebar-top',
-		'description' => 'Странный пример',
-		'before_widget' => '<div class="widget %2$s">',
-		'after_widget'  => "</div>\n"
 	]);
 
 	register_sidebar([
@@ -188,11 +178,11 @@ foreach($postslist as $post){
 	$intro = CFS()->get('intro');
 
 	$str .= "
-	<div>
-	<div><em>$dt</em></div>
-	<div><strong>$title</strong></div>
-	<div>$intro</div>
-	<a href=\"$link\" >Далее...</a>
+	<div class = 'recent'>
+	<date class = 'recent__date'><em>$dt</em></date>
+	<h3 class = 'recent__header'>$title</h3>
+	<p class = 'recent__description'>$intro</p>
+	<a class = 'recent__link' href=\"$link\" >Далее...</a>
 	</div>
 	";
 }
@@ -230,55 +220,10 @@ for ($i=0; $i<count($array[0]); $i++){
 /*Поставить разделители после всех элементов главного меню, кроме ссылки на главнуб страницу, предшествующей ей ссылки и последней ссылки*/
 for ($i=0; $i<count($array[0]); $i++){
 	if($i!==$home_link && $i!==$home_link-1 && $i!==count($array[0])-1){
-		$sep = str_replace('</li>', '</li><li style = "width: 3px; height: 3px; background-color: lightgrey; border-radius: 50%; padding: 0"></li>',  $array[0][$i]);
+		$sep = str_replace('</li>', '</li><li class = "separator"></li>',  $array[0][$i]);
 		$items = str_replace($array[0][$i], $sep, $items);
 	};
 }
 return $items;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*add_filter('wp_nav_menu', 'process_menu');
-
-
-function process_menu($block_menu) {
-// Выбираем все <li>...</li>
-	preg_match_all('|<li(.*?)</li>|is', $block_menu,  $array);
-// Проходим в цикле по всем выбранным тегам '<li>' 
-	foreach ($array[0] as  $key=>$val){
-		 // если встретили класс "menu-item-home" то делаем 3 действия:сохраняем индекс этого элемента, удаляем текст (название страницы) из тега <a> и добавляем в тег <a> тег <img>
-		if (strpos($val, 'menu-item-home')){
-		  $result[] = $key; //сохраняем индекс этого элемента
-		  $regexp = "/[A-Za-zА-Яа-яЁё]*<\/a/";
-		  $a = preg_replace($regexp, '</a', $val); // удаляем текст (название страницы) из тега <a>
-		  $imgPath = get_template_directory_uri() . '/assets/img/logo.png';
-		  $imgLink = str_replace('</a>', '<img src="' . $imgPath . '" alt="перейти на главную"></a>',  $a); // добавляем в тег <a> тег <img>
-		  $block_menu = str_replace($val, $imgLink, $block_menu);
-		}
-	 }
-	 for ($i=0; $i<count($array[0]); $i++){
-		 if($i!==$result[0] && $i!==$result[0]-1 && $i!==count($array[0])-1){
-			$b = str_replace('</li>', '</li><div style = "width: 3px; height: 3px; background-color: lightgrey; border-radius: 50%"></div>',  $array[0][$i]);
-			$block_menu = str_replace($array[0][$i], $b, $block_menu);
-		 }
-	 }
-	echo $result[0];
-	return $block_menu;
-}
-
-*/
-
 ?>

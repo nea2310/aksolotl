@@ -1,0 +1,25 @@
+/****************footer***************************/
+footer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 30px 0;
+
+  .footer-social {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .social {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .wp-block-image img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

@@ -1,0 +1,182 @@
+/************************* карточка портфолио********************/
+
+.portfolio-card {
+  display: flex;
+  flex-basis: calc(100% / 3);
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  color: $color-main;
+
+  .post-links {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+    gap: 10px;
+
+    @include media-breakpoint-down($xl) {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    @include media-breakpoint-down($xs) {
+      flex-direction: column;
+    }
+  }
+
+  .post-link {
+    a {
+      font-size: 16px;
+      text-align: center;
+      width: 100%;
+      min-width: 110px;
+      display: block;
+      padding: 15px 10px;
+      position: relative;
+      font-weight: 700;
+      color: rgb(209, 209, 217);
+      text-decoration: none;
+      text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+      outline: none;
+      background: linear-gradient(rgb(110, 112, 120), rgb(81, 81, 86)) rgb(110, 112, 120);
+      box-shadow: 0 1px rgba(255, 255, 255, 0.2) inset, 0 3px 5px rgba(0, 1, 6, 0.5), 0 0 1px 1px rgba(0, 1, 6, 0.2);
+      transition: 0.2s ease-in-out;
+
+      &:active {
+        top: 1px;
+        background: linear-gradient(rgb(76, 77, 82), rgb(56, 57, 62)) rgb(76, 77, 82);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.5) inset, 0 2px 3px rgba(0, 0, 0, 0.5) inset,
+          0 1px 1px rgba(255, 255, 255, 0.1);
+      }
+
+      &:hover:not(:active) {
+        background: linear-gradient(rgb(126, 126, 134), rgb(70, 71, 76)) rgb(126, 126, 134);
+      }
+
+      &:focus {
+        background: linear-gradient(rgb(126, 126, 134), rgb(3, 3, 4)) rgb(126, 126, 134);
+      }
+    }
+  }
+
+  .post-tags {
+    font-size: 18px;
+    margin: 0 auto;
+    color: $color-text;
+
+    @include media-breakpoint-down($xl) {
+      text-align: center;
+      margin: 20px 0;
+    }
+  }
+
+  .post-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .post-preview img {
+    object-fit: cover;
+    aspect-ratio: 2/1;
+    height: 100%;
+  }
+
+  .post-text-wrap {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 2;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: $color-background;
+      bottom: -10px;
+      z-index: 1;
+      align-self: center;
+      transform: rotateZ(45deg);
+    }
+  }
+
+  .post-icon {
+    margin: 0 auto;
+    height: 50px;
+
+    @include media-breakpoint-down($xl) {
+      margin: auto;
+    }
+  }
+  .post-title {
+    font-size: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    text-align: center;
+
+    @include media-breakpoint-down($xl) {
+      text-align: center;
+      margin: 20px 0;
+    }
+  }
+
+  .stack {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    a {
+      display: block;
+      width: 30px;
+      height: 30px;
+      background-color: rgb(130, 94, 94);
+      border-radius: 50%;
+    }
+
+    &-caption {
+      margin: 0 auto 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}
+
+/* .portfolio-card .link-javascript a {
+  background-color: ;
+  background: ;
+}
+
+.portfolio-card .link-scss a {
+  background-color: ;
+  background: ;
+}
+
+.portfolio-card .link-pug a {
+  background-color: ;
+  background: ;
+}
+
+.portfolio-card .link-webpack5 a {
+  background-color: ;
+  background: ;
+}
+
+.portfolio-card .link-typescript a {
+  background-color: ;
+  background: ;
+}
+
+.portfolio-card .link-react a {
+  background-color: ;
+  background: ;
+}
+
+.portfolio-card .link-jest a {
+  background-color: ;
+  background: ;
+} */

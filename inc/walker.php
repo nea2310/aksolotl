@@ -5,7 +5,7 @@ class Walker_Primary_Nav extends Walker_Nav_Menu{
 	//ul
 	//принимает три аргумента - $output, $depth, $args
 	/*
-	знак & перед $output нужен, чтобы не переаписывать output-информацию, которую генерирует класс Walker_Nav_Menu. Если не поставить &, 
+	знак & перед $output нужен, чтобы не перезаписывать output-информацию, которую генерирует класс Walker_Nav_Menu. Если не поставить &, 
 	то output будет пустой
 	*/
 

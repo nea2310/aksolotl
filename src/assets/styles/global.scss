@@ -1,0 +1,96 @@
+$xxs: 320px;
+$xs: 490px;
+$sm: 767px;
+$md: 991px;
+$lg: 1199px;
+$xl: 1440px;
+$xxl: 1920px;
+$wrapper-width: 1170px;
+
+$color-main: rgb(65, 22, 22);
+$color-background: rgb(255, 255, 255);
+$color-text: rgb(30, 17, 17);
+$color-link: rgb(34, 153, 233);
+$color-logo: rgb(134, 192, 158);
+$color-logo-shadow: rgb(90 189 120);
+
+$block-shadow: 0 1px 4px rgb(155 155 155), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+$font-main: Montserrat, Arial, Helvetica, sans-serif;
+
+@mixin visually-hidden() {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+@mixin button-reset-style() {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin fieldset-reset-style() {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+@mixin ul-reset-style() {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin font-h1() {
+  font-family: $font-main;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  color: $color-title;
+}
+
+@mixin font-h2() {
+  font-family: $font-main;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 23px;
+  color: $color-title;
+}
+
+@mixin font-h3() {
+  font-family: $font-main;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: $color-title;
+  text-transform: uppercase;
+}
+
+@mixin font-body() {
+  font-family: $font-main;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@mixin media-breakpoint-up($width) {
+  @media (min-width: ($width + 1)) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-down($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-between($min-width, $max-width) {
+  @media (min-width: ($min-width + 1)) and (max-width: $max-width) {
+    @content;
+  }
+}

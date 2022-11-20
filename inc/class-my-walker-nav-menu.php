@@ -234,9 +234,8 @@ class My_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 
 /*Создать тег <img> и задать переменную ($is_main), определяющую, что  это главная страница (в $class_names есть 'menu-item-home')*/
-$img_path = get_template_directory_uri() . '/assets/img/logo.png'; //CUSTOM
 $is_main = strpos($class_names, 'menu-item-home');//CUSTOM
-$img = $is_main ? '<img src="' . $img_path . '" alt="перейти на главную">':'';//CUSTOM
+$img = $is_main ? '<div class="logo"><div class="logo-heart"></div><div class="logo-heart"></div><div class="logo-heart"></div><div class="logo-heart"></div></div>':'';//CUSTOM
 
 /*Вставить тег <img> внутрь тега <a>, если это главная страница (в $class_names есть 'menu-item-home') 
 (в ином случае вставляем пустую строку)*/

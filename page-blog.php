@@ -34,9 +34,6 @@ foreach( $result as $p ){
 }
 ?>
   </main>
-  <aside>
-    <?php dynamic_sidebar('sidebar-right-column') ?>
-  </aside>
-
+  <?php get_template_part('src/components/sidebar/sidebar')?>
 </div>
 <?php get_footer() ?>

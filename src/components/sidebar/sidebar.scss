@@ -1,0 +1,64 @@
+.sidebar {
+  background-color: $color-background;
+  width: 200px;
+  position: relative;
+  transition: all linear 0.3s;
+
+  @include media-breakpoint-down($sm) {
+    position: absolute;
+    right: -200px;
+  }
+  &_active {
+    box-shadow: $block-shadow;
+    right: 0;
+    padding: 10px;
+    transition: right linear 0.3s;
+  }
+
+  &-button {
+    @include button-reset-style;
+    position: absolute;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    left: -80px;
+    display: none;
+
+    @include media-breakpoint-down($sm) {
+      display: block;
+    }
+  }
+
+  .right-column {
+    h2 {
+      font-size: 20px;
+    }
+
+    a {
+      font-size: 18px;
+    }
+
+    .widget_categories {
+      .wp-block-categories-list {
+        padding-inline-start: 10px;
+      }
+
+      .cat-item {
+        margin-top: 10px;
+        position: relative;
+      }
+
+      .cat-item::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background-color: lightgrey;
+        border-radius: 50%;
+        left: -10px;
+        top: 8px;
+      }
+    }
+  }
+}

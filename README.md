@@ -76,10 +76,3 @@ src
 
 * Сборка в режиме development:
   ```npm run dev```
-
-* Сборка в режиме production:
-  ```npm run build```
-
-## Перенос на хостинг
-
-

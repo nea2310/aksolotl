@@ -3,6 +3,7 @@
 $indent: -110px;
 
 .page-template-page-blog {
+  overflow-x: hidden;
   color: $color-main;
   display: flex;
   flex-direction: column;
@@ -23,6 +24,10 @@ $indent: -110px;
       width: 100%;
       height: auto;
     }
+
+    @include media-breakpoint-down($sm) {
+      display: none;
+    }
   }
 }
 
@@ -38,6 +43,7 @@ $indent: -110px;
   }
 
   @include media-breakpoint-down($sm) {
+    margin: 30px auto 0;
     padding: 10px;
     gap: 0;
   }
@@ -45,44 +51,6 @@ $indent: -110px;
   a img {
     width: 100%;
     object-fit: cover;
-  }
-
-  .right-column {
-    width: 200px;
-
-    @include media-breakpoint-down($sm) {
-      display: none;
-    }
-
-    h2 {
-      font-size: 20px;
-    }
-
-    a {
-      font-size: 18px;
-    }
-
-    .widget_categories {
-      .wp-block-categories-list {
-        padding-inline-start: 10px;
-      }
-
-      .cat-item {
-        margin-top: 10px;
-        position: relative;
-      }
-
-      .cat-item::before {
-        content: "";
-        position: absolute;
-        width: 3px;
-        height: 3px;
-        background-color: lightgrey;
-        border-radius: 50%;
-        left: -10px;
-        top: 5px;
-      }
-    }
   }
 
   .posts {

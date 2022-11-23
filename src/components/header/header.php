@@ -22,12 +22,10 @@
 <body <?php body_class() ?>>
   <header class="header">
     <a class="header__logo" href="<?php echo get_site_url() ?>">
-      <div class="logo">
-        <div class="logo-heart"></div>
-        <div class="logo-heart"></div>
-        <div class="logo-heart"></div>
-        <div class="logo-heart"></div>
-      </div>
+      <?php include dirname(__FILE__, 2) . '\logo.php'?>
+
+
+
     </a>
 
     <button class="header__burger-button" aria-label="навигация">

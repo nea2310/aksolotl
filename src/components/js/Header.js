@@ -36,6 +36,6 @@ class Header {
   }
 }
 
-const header = document.querySelector('header');
+const header = document.querySelector('.header');
 // eslint-disable-next-line no-new
 new Header(header);

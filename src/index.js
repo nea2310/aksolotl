@@ -5,4 +5,4 @@ function requireAll(requireContext) {
 }
 
 requireAll(require.context('./assets/styles/', true, /.*\.(scss)$/));
-requireAll(require.context('./components/', true, /.*\.(scss|ts)$/));
+requireAll(require.context('./components/', true, /.*\.(scss|js)$/));

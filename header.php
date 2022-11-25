@@ -22,7 +22,8 @@
 <body <?php body_class() ?>>
   <header class="header">
     <a class="header__logo" href="<?php echo get_site_url() ?>">
-      <?php include 'components/logo.php'?>
+    
+      <?php  get_template_part('src/components/logo');?>
     </a>
 
     <button class="header__burger-button" aria-label="навигация">

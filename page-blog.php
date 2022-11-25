@@ -19,17 +19,18 @@ $args = array(
 $result = wp_get_recent_posts( $args );
 
 foreach( $result as $p ){
-  $post = get_post( $p['ID'] )
+  $post = get_post( $p['ID'] );
 	?>
-    <div class="post">
-      <a class="post__link" href="<?php echo get_permalink($p['ID']) ?>">
-        <img class="post__image" src="<?php echo get_the_post_thumbnail_url($p['ID']) ?>">
-      </a>
-      <div class="post__info">
-        <h3 class="post__title"><?php echo $p['post_title'] ?></h3>
-        <div class="post__text"> <?php echo CFS()->get('intro') ?> </div>
-      </div>
-    </div>
+
+<?php 
+  $params = [
+    'permalink' => get_permalink($p['ID']),
+    'thumbnail' => get_the_post_thumbnail_url($p['ID']),
+    'title' => $p['post_title'],
+    'intro' =>CFS()->get('intro')
+  ];
+    get_template_part('src/components/posts', null, $params);
+?>
     <?php 
 }
 ?>

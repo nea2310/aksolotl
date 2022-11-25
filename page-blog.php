@@ -1,5 +1,5 @@
 <?php  
-/*Template Name: Блог*/
+/*Template Name: blog*/
 ?>
 
 
@@ -8,7 +8,7 @@
 <div class="page-posts-wrapper">
 
 
-  <main class="posts">
+  <main class="blog">
 
     <?php
 $args = array(
@@ -34,6 +34,6 @@ foreach( $result as $p ){
 }
 ?>
   </main>
-  <?php get_template_part('src/components/sidebar/sidebar')?>
+  <?php get_template_part('src/components/sidebar')?>
 </div>
 <?php get_footer() ?>

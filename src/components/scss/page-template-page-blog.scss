@@ -1,5 +1,3 @@
-/****************страница Блог, страница категорий***************************/
-
 $indent: -110px;
 
 .page-template-page-blog {
@@ -53,7 +51,7 @@ $indent: -110px;
     object-fit: cover;
   }
 
-  .posts {
+  .blog {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;

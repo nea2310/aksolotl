@@ -1,67 +1,78 @@
-/*================страница CV==================*/
-
 .page-template-page-cv {
   padding: 0 20px;
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    color: $color-main;
-  }
-
-  h1 {
-    padding: 30px 0;
-  }
-
-  h1 * {
-    font-size: 25px;
-  }
-
-  h2 {
-    padding: 20px 0;
-  }
-
-  h2 * {
-    font-size: 20px;
-  }
-
-  h3 {
-    padding: 15px 0;
-  }
-
-  h3 * {
-    font-size: 16px;
-  }
-
-  h4 {
-    padding: 10px 0;
-  }
-
-  h4 * {
-    font-size: 16px;
-  }
-
-  p {
-    line-height: 30px;
-    font-size: 16px;
-    padding-left: 20px;
-    color: $color-text;
-  }
-
-  main {
-    margin-top: 40px;
-  }
-
   .cv {
     margin-top: 40px;
-    padding: 0 40px 20px;
-    box-shadow: $block-shadow;
-  }
 
-  .cv a {
-    font-size: 16px;
-    color: $color-link;
+    &__content {
+      margin-top: 40px;
+      padding: 0 40px 20px;
+      box-shadow: $block-shadow;
+
+      a {
+        font-size: 16px;
+        color: $color-link;
+      }
+    }
+
+    &__slider {
+      .carousel {
+        padding: 20px;
+        margin: 20px 0;
+
+        .portfolio-card {
+          max-width: 400px;
+          min-height: 400px;
+          margin: 30px auto;
+        }
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: $color-main;
+    }
+
+    h1 {
+      padding: 30px 0;
+    }
+
+    h1 * {
+      font-size: 25px;
+    }
+
+    h2 {
+      padding: 20px 0;
+    }
+
+    h2 * {
+      font-size: 20px;
+    }
+
+    h3 {
+      padding: 15px 0;
+    }
+
+    h3 * {
+      font-size: 16px;
+    }
+
+    h4 {
+      padding: 10px 0;
+    }
+
+    h4 * {
+      font-size: 16px;
+    }
+
+    p {
+      line-height: 30px;
+      font-size: 16px;
+      padding-left: 20px;
+      color: $color-text;
+    }
   }
 
   .slick-list {

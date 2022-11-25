@@ -1,0 +1,81 @@
+.page-template-page-portfolio {
+  .portfolio {
+    color: $color-main;
+
+    &-item {
+      margin: 40px 20px;
+      display: flex;
+      height: 700px;
+      align-items: center;
+      justify-content: center;
+      box-shadow: $block-shadow;
+
+      @include media-breakpoint-down($xl) {
+        height: initial;
+      }
+      @include media-breakpoint-down($xs) {
+        margin: 40px 10px;
+        display: block;
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      &__img {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+
+        @include media-breakpoint-down($xl) {
+          display: none;
+        }
+
+        &-large {
+          flex-basis: calc(100% / 3 * 2);
+          height: 100%;
+        }
+
+        &-small {
+          flex-basis: calc(100% / 3);
+          height: 100%;
+        }
+      }
+
+      &__slider {
+        min-width: 300px;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        @include media-breakpoint-down($xl) {
+          display: none;
+        }
+
+        .slider-wrapper {
+          width: 100%;
+        }
+      }
+    }
+
+    .slider-metalamp__wrapper,
+    .slider-metalamp__wrapper_orientation_vertical {
+      padding: 0;
+    }
+
+    .slider-metalamp__wrapper_orientation_vertical .slider-metalamp__frame {
+      left: 0;
+      width: 40px;
+    }
+
+    .slider-metalamp__wrapper:not(.slider-metalamp__wrapper_orientation_vertical) .slider-metalamp__frame {
+      top: 0;
+      height: 35px;
+    }
+  }
+}

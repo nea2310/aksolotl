@@ -1,8 +1,8 @@
+/* eslint-disable no-console */
 class Sidebar {
   constructor(element, elementName = 'sidebar') {
     this.elementName = elementName;
     this.wrapper = element;
-
     this._bindEventListeners();
     this._render();
   }
@@ -26,6 +26,8 @@ class Sidebar {
   }
 }
 
-const header = document.querySelector('.sidebar');
-// eslint-disable-next-line no-new
-new Sidebar(header);
+const sidebar = document.querySelector('.sidebar');
+if (sidebar) {
+  // eslint-disable-next-line no-new
+  new Sidebar(sidebar);
+}

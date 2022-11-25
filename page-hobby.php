@@ -4,14 +4,10 @@
 
 <?php get_header() ?>
 
-<main>
+<main class="hobby">
   <section class="gallery">
     <a class="gallery__link" href="<?php echo get_page_link( 12 ) ?>"></a>
     <?php dynamic_sidebar('sidebar-infoblock-bottom') ?>
-  </section>
-
-  <section class="cv">
-    <?php the_content(); ?>
   </section>
 </main>
 

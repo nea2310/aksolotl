@@ -1,6 +1,6 @@
 // eslint-disable-next-line func-names
 (function () {
-  $('.js-slider').slick(
+  $('.js-cv__slider').slick(
     {
       infinite: true,
       slidesToShow: 1,

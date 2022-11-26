@@ -7,6 +7,8 @@
       slidesToScroll: 1,
       dots: true,
       arrows: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
     },
   );
 }());

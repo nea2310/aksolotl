@@ -13,7 +13,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta link rel="icon" href="/favicon.ico" sizes="any">
-  <meta link rel="icon" href="/favicons/icon.svg" type="image/svg+xml">
   <meta link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
   <meta link rel="manifest" href="/favicons/manifest.json">
   <?php wp_head() ?>

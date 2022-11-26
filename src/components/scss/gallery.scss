@@ -1,4 +1,3 @@
-/****************** галерея на странице CV***********************/
 .gallery {
   height: 600px;
   position: relative;
@@ -60,7 +59,7 @@
     }
   }
 
-  .gallery__link {
+  &__link {
     position: absolute;
     display: block;
     right: 0;

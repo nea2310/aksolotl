@@ -14,52 +14,53 @@
   &:focus {
     animation-play-state: running;
   }
-}
 
-.logo-heart {
-  position: relative;
-  width: 40px;
-  height: 35px;
+  &-heart {
+    position: relative;
+    width: 40px;
+    height: 35px;
 
-  &:nth-child(1) {
-    left: 20px;
-    top: -3px;
-  }
+    &:nth-child(1) {
+      left: 20px;
+      top: -3px;
+    }
 
-  &:nth-child(2) {
-    top: 0;
-    left: 20px;
-    transform: rotateZ(180deg);
-  }
-  &:nth-child(3) {
-    left: 40px;
-    top: -54px;
-    transform: rotateZ(90deg);
-  }
-  &:nth-child(4) {
-    top: -89px;
-    transform: rotateZ(-90deg);
-  }
-}
+    &:nth-child(2) {
+      top: 0;
+      left: 20px;
+      transform: rotateZ(180deg);
+    }
+    &:nth-child(3) {
+      left: 40px;
+      top: -54px;
+      transform: rotateZ(90deg);
+    }
+    &:nth-child(4) {
+      top: -89px;
+      transform: rotateZ(-90deg);
+    }
 
-.logo-heart:before,
-.logo-heart:after {
-  position: absolute;
-  content: "";
-  left: 20px;
-  top: 0;
-  width: 20px;
-  height: 35px;
-  background-color: $color-logo;
-  border-radius: 50px 50px 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-.logo-heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-  box-shadow: 3px 2px 3px 1px $color-logo-shadow;
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      left: 20px;
+      top: 0;
+      width: 20px;
+      height: 35px;
+      background-color: $color-logo;
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    &:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+      box-shadow: 3px 2px 3px 1px $color-logo-shadow;
+    }
+  }
 }
 
 @keyframes spin-logo {

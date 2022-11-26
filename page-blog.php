@@ -5,11 +5,8 @@
 
 <?php get_header() ?>
 <?php dynamic_sidebar('sidebar-main-image') ?>
-<div class="page-posts-wrapper">
-
-
+<div class="blog__wrapper">
   <main class="blog">
-
     <?php
 $args = array(
 	'numberposts' => 10,
@@ -20,17 +17,15 @@ $result = wp_get_recent_posts( $args );
 
 foreach( $result as $p ){
   $post = get_post( $p['ID'] );
-	?>
-
-<?php 
-  $params = [
+    $params = [
     'permalink' => get_permalink($p['ID']),
     'thumbnail' => get_the_post_thumbnail_url($p['ID']),
     'title' => $p['post_title'],
     'intro' =>CFS()->get('intro')
   ];
-    get_template_part('src/components/posts', null, $params);
-?>
+    get_template_part('src/components/post', null, $params);
+	?>
+
     <?php 
 }
 ?>

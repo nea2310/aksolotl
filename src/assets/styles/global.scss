@@ -15,8 +15,18 @@ $color-logo: rgb(134, 192, 158);
 $color-logo-shadow: rgb(90 189 120);
 
 $block-shadow: 0 1px 4px rgb(155 155 155), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+$block-shadow-active: 0 1px 4px rgb(91, 91, 91), 0 0 20px rgba(0, 0, 0, 0.1) inset;
 
 $font-main: Montserrat, Arial, Helvetica, sans-serif;
+
+$indent: -110px;
+
+@mixin webkit-box($row-amount) {
+  display: -webkit-box;
+  -webkit-line-clamp: $row-amount;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 @mixin visually-hidden() {
   position: absolute;

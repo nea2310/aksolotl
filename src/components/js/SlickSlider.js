@@ -8,7 +8,7 @@
       dots: true,
       arrows: true,
       autoplay: true,
-      autoplaySpeed: 3000,
+      autoplaySpeed: 10000,
     },
   );
 }());

@@ -3,7 +3,7 @@
          <div class="portfolio-card__icon"><img src="<?php echo $args['imgIcon'] ?>"></div>
 
          <h2 class="portfolio-card__title"><?php the_title() ?></h2>
-         <span class="portfolio-card__caption">Использованные технологии</span>
+         <span class="portfolio-card__caption">Использованные технологии:</span>
          <div class="portfolio-card__stack">
            <?php if ( $args['linkJavascript']):?> <div class="portfolio-card__javascript"><a
                class="portfolio-card__javascript-link" href="https://www.javascript.com/" target="_blank" noopener

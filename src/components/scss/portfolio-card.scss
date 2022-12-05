@@ -153,10 +153,14 @@
   }
 
   &__caption {
-    margin: 0 auto 20px;
+    margin: 0 auto;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
+
+    @include media-breakpoint-down($xl) {
+      margin: 0 auto 20px;
+    }
   }
 
   &__javascript-link {

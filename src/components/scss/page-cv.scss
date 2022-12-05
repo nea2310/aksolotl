@@ -105,6 +105,7 @@
   .slick-next:focus {
     border-top: 5px solid $color-main;
     border-right: 5px solid $color-main;
+    z-index: 1;
   }
 
   .slick-next::before,

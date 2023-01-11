@@ -43,6 +43,10 @@
                class="portfolio-card__firebase-link" href="https://firebase.google.com/" target="_blank" noopener
                noreferrer></a> </div>
            <?php endif; ?>
+           <?php if ( $args['linkTestingLibrary']):?> <div class="portfolio-card__testing-library"><a
+               class="portfolio-card__testing-library-link" href="https://testing-library.com//" target="_blank" noopener
+               noreferrer></a> </div>
+           <?php endif; ?>
          </div>
          <div class="portfolio-card__links">
            <div class="portfolio-card__link">

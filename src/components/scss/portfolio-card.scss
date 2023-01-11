@@ -127,7 +127,8 @@
   &__jest,
   &__jquery,
   &__cra,
-  &__firebase {
+  &__firebase,
+  &__testing-library {
     display: block;
     width: 30px;
     height: 30px;
@@ -143,7 +144,8 @@
   &__jest-link,
   &__jquery-link,
   &__cra-link,
-  &__firebase-link {
+  &__firebase-link,
+  &__testing-library-link {
     display: block;
     width: 100%;
     height: 100%;
@@ -205,6 +207,10 @@
 
   &__redux-link {
     background-image: url("../../assets/images/redux.svg");
+  }
+
+  &__testing-library-link {
+    background-image: url("../../assets/images/testing-lib.webp");
   }
 
   &__slider {

@@ -35,6 +35,7 @@
     $linkJquery= CFS()->get('jquery');
     $linkCRA= CFS()->get('cra');
     $linkFirebase= CFS()->get('firebase');
+    $linkTestingLibrary= CFS()->get('testinglib');
   ?>
 
   <article class="portfolio-item">
@@ -72,7 +73,8 @@
       'linkJest' => $linkJest,
       'linkJquery' => $linkJquery,
       'linkCRA' => $linkCRA,
-      'linkFirebase' => $linkFirebase
+      'linkFirebase' => $linkFirebase,
+      'linkTestingLibrary' => $linkTestingLibrary
     ];
 
 

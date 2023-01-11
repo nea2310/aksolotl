@@ -5,7 +5,8 @@
   transition: all linear 0.3s;
 
   @include media-breakpoint-down($sm) {
-    position: absolute;
+    position: fixed;
+    bottom: 20px;
     z-index: 2;
     right: -200px;
   }
@@ -14,18 +15,48 @@
     right: 10px;
     padding: 10px;
     transition: right linear 0.3s;
+
+    .sidebar-button {
+      right: 10px;
+      left: initial;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      &::after {
+        transform: rotate(135deg);
+        left: 20px;
+      }
+    }
   }
 
   &-button {
     @include button-reset-style;
+    background-color: $color-background;
+    box-shadow: $block-shadow;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     position: absolute;
     z-index: 5;
     cursor: pointer;
     width: 60px;
     height: 60px;
-    top: 0;
-    left: -80px;
+    top: 20px;
+    left: -70px;
     display: none;
+
+    &::after {
+      position: absolute;
+      z-index: 10;
+      content: "";
+      width: 15px;
+      height: 15px;
+      border-top: 3px solid $color-main;
+      border-left: 3px solid $color-main;
+      transform: rotate(-45deg);
+      top: 22px;
+      left: 26px;
+    }
 
     @include media-breakpoint-down($sm) {
       display: block;

@@ -55,12 +55,16 @@ header {
 
       @include media-breakpoint-down($sm) {
         top: 20px;
-        right: 40px;
+        left: 40px;
         display: block;
         z-index: 6;
         position: absolute;
         width: 25px;
         height: 25px;
+      }
+
+      @include media-breakpoint-down($xxs) {
+        left: 10px;
       }
 
       &_active {

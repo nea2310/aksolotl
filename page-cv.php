@@ -43,6 +43,7 @@
     $linkJquery= CFS()->get('jquery');
     $linkCRA= CFS()->get('cra');
     $linkFirebase= CFS()->get('firebase');
+    $linkTestingLibrary= CFS()->get('testinglib');
 		?>
     <article class="carousel">
     <?php 
@@ -62,7 +63,8 @@
       'linkJest' => $linkJest,
       'linkJquery' => $linkJquery,
       'linkCRA' => $linkCRA,
-      'linkFirebase' => $linkFirebase
+      'linkFirebase' => $linkFirebase,
+      'linkTestingLibrary'=> $linkTestingLibrary,
     ];
     get_template_part('src/components/portfolio-card', null, $params);
     ?>

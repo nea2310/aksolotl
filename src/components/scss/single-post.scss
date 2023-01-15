@@ -1,7 +1,10 @@
 .single-post {
   padding: 0px 20px;
   line-height: 30px;
-  font-size: 18px;
+
+  p, p * {
+    font-size: 18px;
+  }
 
   &__date {
     display: inline-flex;
@@ -18,15 +21,8 @@
   }
 
   &__title {
-    display: flex;
-    justify-content: center;
     font-size: 18px;
     margin-bottom: 50px;
-  }
-
-  &__image {
-    display: flex;
-    justify-content: center;
   }
 
   &__image img {
@@ -41,8 +37,13 @@
       margin-left: 30px;
     }
     
-    li{
+    li, li * {
       list-style: initial;
+      font-size: 18px;
+    }
+
+    a, a *{
+      text-decoration: underline;
     }
   }
 
@@ -64,20 +65,17 @@
 
   h3 {
     margin: 15px 0;
-    font-size: 22px;
+    font-size: 24px;
   }
 
   h4 {
+    padding-left: 20px;
     margin: 10px 0;
-    font-size: 18px;
+    font-size: 22px;
   }
 
   code {
     background-color: $color-code;
     padding: 20px;
-  }
-
-  a, a *{
-    text-decoration: underline;
   }
 }

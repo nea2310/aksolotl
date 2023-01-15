@@ -10,7 +10,6 @@
       </svg>
     </span>
     <h1 class="single-post__title"><?php the_title(); ?></h2>
-      <div class="single-post__image"><?php the_post_thumbnail('large'); ?></div>
       <div class="single-post__content">
         <?php the_content(); ?>
         <span class="single-post__edit">

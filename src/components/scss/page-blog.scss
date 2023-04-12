@@ -9,26 +9,9 @@
     position: relative;
     z-index: 2;
   }
-
-  .presentation {
-    width: 100%;
-    position: relative;
-    top: $indent;
-    z-index: 1;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-
-    @include media-breakpoint-down($sm) {
-      display: none;
-    }
-  }
 }
 
 .blog__wrapper {
-  margin: $indent auto 0;
   flex-grow: 1;
   padding: 40px;
   display: flex;
